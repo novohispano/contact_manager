@@ -120,7 +120,7 @@ describe PhoneNumbersController do
       it "redirects to the phone_number" do
         phone_number = PhoneNumber.create! valid_attributes
         put :update, {:id => phone_number.to_param, :phone_number => valid_attributes}, valid_session
-        response.should redirect_to(phone_number)
+        response.should redirect_to(phone_number.person)
       end
     end
 
