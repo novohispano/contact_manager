@@ -23,7 +23,8 @@ describe EmailAddressesController do
   # This should return the minimal set of attributes required to create a valid
   # EmailAddress. As you add validations to EmailAddress, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "address" => "jorge@example.com" } }
+  let(:person)           { Person.create!(first_name: 'Jack', last_name: 'Smith') }
+  let(:valid_attributes) { { 'address' => 'jorge@example.com', 'person_id' => person.id } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -77,7 +78,7 @@ describe EmailAddressesController do
 
       it "redirects to the created email_address" do
         post :create, {:email_address => valid_attributes}, valid_session
-        response.should redirect_to(EmailAddress.last)
+        response.should redirect_to(person)
       end
     end
 
