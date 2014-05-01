@@ -17,8 +17,11 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'simplecov'
   gem 'pry'
+  # gem 'selenium-webdriver'
 end
