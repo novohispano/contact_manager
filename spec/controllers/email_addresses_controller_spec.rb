@@ -24,7 +24,7 @@ describe EmailAddressesController do
   # EmailAddress. As you add validations to EmailAddress, be sure to
   # adjust the attributes here as well.
   let(:person)           { Person.create!(first_name: 'Jack', last_name: 'Smith') }
-  let(:valid_attributes) { { 'address' => 'jorge@example.com', 'person_id' => person.id } }
+  let(:valid_attributes) { { 'address' => 'jorge@example.com', 'contact_id' => person.id, 'contact_type' => 'Person' } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in

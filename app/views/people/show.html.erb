@@ -32,5 +32,5 @@
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %> |
-<%= link_to 'Add phone number', new_phone_number_path(person_id: @person) %> |
-<%= link_to 'Add email', new_email_address_path(person_id: @person) %>
+<%= link_to 'Add phone number', new_phone_number_path(contact_id: @person, contact_type: 'Person') %> |
+<%= link_to 'Add email', new_email_address_path(contact_id: @person, contact_type: 'Person') %>

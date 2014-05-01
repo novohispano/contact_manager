@@ -4,5 +4,5 @@ class EmailAddress < ActiveRecord::Base
     message: "needs an valid email address"
   }
 
-  belongs_to :person
+  belongs_to :contact, polymorphic: true
 end

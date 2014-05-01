@@ -24,7 +24,7 @@ describe PhoneNumbersController do
   # PhoneNumber. As you add validations to PhoneNumber, be sure to
   # adjust the attributes here as well.
   let(:person)           { Person.create(first_name: 'John', last_name: 'Smith')}
-  let(:valid_attributes) { { "number" => "MyString", "person_id" => person.id } }
+  let(:valid_attributes) { { "number" => "MyString", "contact_id" => person.id, "contact_type" => 'Person' } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -120,7 +120,7 @@ describe PhoneNumbersController do
       it "redirects to the phone_number" do
         phone_number = PhoneNumber.create! valid_attributes
         put :update, {:id => phone_number.to_param, :phone_number => valid_attributes}, valid_session
-        response.should redirect_to(phone_number.person)
+        response.should redirect_to(phone_number.contact)
       end
     end
 
