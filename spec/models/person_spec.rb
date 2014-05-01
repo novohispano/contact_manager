@@ -27,4 +27,8 @@ describe Person do
   it 'has phone numbers' do
     expect(person.phone_numbers).to eq []
   end
+
+  it 'has email_addresses' do
+    expect(person.email_addresses).to eq []
+  end
 end
