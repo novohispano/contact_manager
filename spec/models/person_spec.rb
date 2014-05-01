@@ -25,10 +25,14 @@ describe Person do
   end
 
   it 'has phone numbers' do
-    expect(person.phone_numbers).to eq []
+    phone = person.phone_numbers.create!(number: '123456789')
+    expect(person).to respond_to :phone_numbers
+    expect(person.phone_numbers).to include phone
   end
 
   it 'has email_addresses' do
-    expect(person.email_addresses).to eq []
+    email = person.email_addresses.create!(address: 'jorge@example.com')
+    expect(person).to respond_to :email_addresses
+    expect(person.email_addresses).to include email
   end
 end
