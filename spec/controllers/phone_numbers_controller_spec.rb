@@ -134,7 +134,7 @@ describe PhoneNumbersController do
       end
 
       it "re-renders the 'edit' template" do
-        phone_number = PhoneNumber.create! valid_attributes
+        phone_number = PhoneNumber.create!(valid_attributes)
         # Trigger the behavior that occurs when invalid params are submitted
         PhoneNumber.any_instance.stub(:save).and_return(false)
         put :update, {:id => phone_number.to_param, :phone_number => { "number" => "invalid value" }}, valid_session
@@ -145,16 +145,16 @@ describe PhoneNumbersController do
 
   describe "DELETE destroy" do
     it "destroys the requested phone_number" do
-      phone_number = PhoneNumber.create! valid_attributes
+      phone_number = PhoneNumber.create!(valid_attributes)
       expect {
         delete :destroy, {:id => phone_number.to_param}, valid_session
       }.to change(PhoneNumber, :count).by(-1)
     end
 
-    it "redirects to the phone_numbers list" do
-      phone_number = PhoneNumber.create! valid_attributes
+    it "redirects to the phone number's person" do
+      phone_number = PhoneNumber.create!(valid_attributes)
       delete :destroy, {:id => phone_number.to_param}, valid_session
-      response.should redirect_to(phone_numbers_url)
+      expect(response).to redirect_to(person)
     end
   end
 
