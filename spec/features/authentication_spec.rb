@@ -24,18 +24,28 @@ describe 'the application', type: :feature do
       Rails.application.reload_routes!
     end
 
-    it 'has a logout link' do
-      expect(page).to have_link('Logout', href: logout_path)
+    it 'can logout' do
+      page.click_link 'Logout'
+      expect(page.current_path).to eq(root_path)
+      expect(page).not_to have_link('Logout', href: logout_path)
+    end
+
+    it 'does not have a login link' do
+      expect(page).not_to have_link('Login', href: login_path)
     end
   end
 
-  context 'when logged in' do
+  context 'when logged out' do
     before(:each) do
       visit root_path
     end
 
-    xit 'has a logout link' do
-      expect(page).to have_link('Logout', href: logout_path)
+    it 'has a Login link' do
+      expect(page).to have_link('Login', href: login_path)
+    end
+
+    it 'does not have a logout link' do
+      expect(page).to_not have_link('Logout', href: logout_path)
     end
   end
 end
