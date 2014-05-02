@@ -3,14 +3,17 @@ require 'features/feature_spec_helper'
 # Capybara.default_driver = :selenium
 
 describe 'the person view', type: :feature do
+  include FeatureHelpers
 
-  let(:person) { Person.create(first_name: 'John', last_name: 'Doe') }
+  let(:person) { Fabricate :person }
+  let(:user)   { person.user }
 
   before(:each) do
     person.phone_numbers.create(number: '555-1234')
     person.phone_numbers.create(number: '555-5678')
     person.email_addresses.create(address: 'jorge@example.com')
     person.email_addresses.create(address: 'mary@example.com')
+    log_user_in user
     visit person_path(person)
   end
 
@@ -21,11 +24,11 @@ describe 'the person view', type: :feature do
   end
 
   it 'has a link to add a new phone number' do
-    expect(page).to have_link('Add phone number for John Doe', href: new_phone_number_path(contact_id: person, contact_type: 'Person'))
+    expect(page).to have_link("Add phone number for #{person.to_s}", href: new_phone_number_path(contact_id: person, contact_type: 'Person'))
   end
 
   it 'adds a new phone number' do
-    page.click_link('Add phone number for John Doe')
+    page.click_link("Add phone number for #{person.to_s}")
     page.fill_in('Number', with: '555-8888')
     page.click_button('Create Phone number')
     expect(current_path).to eq(person_path(person))
@@ -71,11 +74,11 @@ describe 'the person view', type: :feature do
   end
 
   it 'has a link to add a new phone number' do
-    expect(page).to have_link('Add email for John Doe', href: new_email_address_path(contact_id: person.id, contact_type: 'Person'))
+    expect(page).to have_link("Add email for #{person.to_s}", href: new_email_address_path(contact_id: person.id, contact_type: 'Person'))
   end
 
   it 'adds an email address' do
-    page.click_link('Add email for John Doe')
+    page.click_link("Add email for #{person.to_s}")
     page.fill_in('Address', with: 'mary@example.com')
     page.click_button('Create Email address')
     expect(current_path).to eq(person_path(person))
