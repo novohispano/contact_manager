@@ -1,0 +1,8 @@
+%p#notice
+  = notice
+%p
+  %strong Company name:
+  = @company.name
+= render 'phone_numbers/phone_numbers', contact: @company
+= render 'email_addresses/email_addresses', contact: @company
+= render 'contacts/actions', contact: @company
