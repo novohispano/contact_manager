@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Company do
-  let(:company) { Company.create!(name: 'Lockheed') }
+  let(:company) { Fabricate :company }
 
   it 'is valid' do
     expect(company).to be_valid
@@ -27,5 +27,9 @@ describe Company do
     email = company.email_addresses.create!(address: 'jorge@example.com')
     expect(company).to respond_to :email_addresses
     expect(company.email_addresses).to include email
+  end
+
+  it 'is a child of the user' do
+    expect(company.user).to be_instance_of User
   end
 end

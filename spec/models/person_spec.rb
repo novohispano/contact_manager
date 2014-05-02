@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe Person do
-  let(:person) do
-    Person.create(first_name: 'Jack', last_name: 'Smith')
-  end
+  let(:person) { Fabricate :person }
 
   it 'is valid' do
     expect(person).to be_valid
@@ -34,5 +32,9 @@ describe Person do
     email = person.email_addresses.create!(address: 'jorge@example.com')
     expect(person).to respond_to :email_addresses
     expect(person.email_addresses).to include email
+  end
+
+  it 'is a child of the user' do
+    expect(person.user).to be_instance_of User
   end
 end
