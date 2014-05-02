@@ -15,6 +15,15 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+module FeatureHelpers
+  def log_user_in(user)
+    ApplicationController
+      .any_instance # comes from rspec-mocks
+      .stub(:current_user)
+      .and_return(user)
+  end
+end
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
