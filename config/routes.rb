@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/auth/:provider/callback' => 'sessions#create'
+
   resources :companies
 
   resources :email_addresses, except: [:show, :index]
