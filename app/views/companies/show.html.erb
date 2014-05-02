@@ -9,7 +9,4 @@
 
 <%= render 'email_addresses/email_addresses', contact: @company %>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %> |
-<%= link_to "Add phone number for #{@company}", new_phone_number_path(contact_id: @company, contact_type: 'Company') %> |
-<%= link_to "Add email for #{@company}", new_email_address_path(contact_id: @company, contact_type: 'Company') %>
+<%= render 'contacts/actions', contact: @company %>

@@ -1,0 +1,4 @@
+<%= link_to 'Edit', "/#{to_path(contact)}/#{contact.id}" %> |
+<%= link_to 'Back', "/#{to_path(contact)}" %> |
+<%= link_to "Add phone number for #{contact}", new_phone_number_path(contact_id: contact, contact_type: "#{contact.class}") %> |
+<%= link_to "Add email for #{contact}", new_email_address_path(contact_id: contact, contact_type: "#{contact.class}") %>
