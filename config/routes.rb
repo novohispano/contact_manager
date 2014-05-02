@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get '/auth/:provider/callback' => 'sessions#create'
+  get    '/auth/:provider/callback' => 'sessions#create'
+
+  get    '/login'  => redirect('/auth/twitter'), as: :login
+  delete '/logout' => 'sessions#destroy',        as: :logout
 
   resource :sessions, :only => [:create]
 
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :people
 
-  root 'people#index'
+  root 'site#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
