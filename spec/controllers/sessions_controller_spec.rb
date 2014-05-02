@@ -21,6 +21,7 @@ describe SessionsController do
       expect(user.uid).to eq('abc123')
       expect(user.name).to eq("Alice Smith")
       expect(controller.current_user.id).to eq(user.id)
+      expect(response).to redirect_to(root_path)
     end
 
     it "it logs in an existing user" do
@@ -35,6 +36,7 @@ describe SessionsController do
       post :create, {}, { user_id: user.id }
       expect(User.count).to eq(1)
       expect(controller.current_user.id).to eq(user.id)
+      expect(response).to redirect_to(root_path)
     end
   end
 end
