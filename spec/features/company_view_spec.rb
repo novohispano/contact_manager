@@ -1,6 +1,4 @@
-require 'spec_helper'
-require 'capybara/rails'
-require 'capybara/rspec'
+require 'features/feature_spec_helper'
 
 # Capybara.default_driver = :selenium
 

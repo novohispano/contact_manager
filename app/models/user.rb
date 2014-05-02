@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
       name:     data['info']['name']
     )
   end
+
+  def to_s
+    "#{name}"
+  end
 end
