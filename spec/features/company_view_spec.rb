@@ -23,11 +23,11 @@ describe 'the company view', type: :feature do
   end
 
   it 'has a link to add a new phone number' do
-    expect(page).to have_link('Add phone number', href: new_phone_number_path(contact_id: company, contact_type: 'Company'))
+    expect(page).to have_link('Add phone number for Lockheed', href: new_phone_number_path(contact_id: company, contact_type: 'Company'))
   end
 
   it 'adds a new phone number' do
-    page.click_link('Add phone number')
+    page.click_link('Add phone number for Lockheed')
     page.fill_in('Number', with: '555-8888')
     page.click_button('Create Phone number')
     expect(current_path).to eq(company_path(company))
@@ -73,11 +73,11 @@ describe 'the company view', type: :feature do
   end
 
   it 'has a link to add a new phone number' do
-    expect(page).to have_link('Add email', href: new_email_address_path(contact_id: company.id, contact_type: 'Company'))
+    expect(page).to have_link('Add email for Lockheed', href: new_email_address_path(contact_id: company.id, contact_type: 'Company'))
   end
 
   it 'adds an email address' do
-    page.click_link('Add email')
+    page.click_link('Add email for Lockheed')
     page.fill_in('Address', with: 'mary@example.com')
     page.click_button('Create Email address')
     expect(current_path).to eq(company_path(company))

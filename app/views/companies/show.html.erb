@@ -5,27 +5,11 @@
   <%= @company.name %>
 </p>
 
-<ul>
-  <% @company.phone_numbers.each do |phone_number| %>
-    <li>
-      <%= phone_number.number %>
-      <%= link_to 'edit', edit_phone_number_path(phone_number) %>
-      <%= link_to 'delete', phone_number_path(phone_number), method: :delete %>
-    </li>
-  <% end %>
-</ul>
+<%= render 'phone_numbers/phone_numbers', contact: @company %>
 
-<ul>
-  <% @company.email_addresses.each do |email_address| %>
-    <li>
-      <%= email_address.address %>
-      <%= link_to 'edit email', edit_email_address_path(email_address) %>
-      <%= link_to 'delete email', email_address_path(email_address), method: :delete %>
-    </li>
-  <% end %>
-</ul>
+<%= render 'email_addresses/email_addresses', contact: @company %>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %> |
-<%= link_to 'Add phone number', new_phone_number_path(contact_id: @company, contact_type: 'Company') %> |
-<%= link_to 'Add email', new_email_address_path(contact_id: @company, contact_type: 'Company') %>
+<%= link_to "Add phone number for #{@company}", new_phone_number_path(contact_id: @company, contact_type: 'Company') %> |
+<%= link_to "Add email for #{@company}", new_email_address_path(contact_id: @company, contact_type: 'Company') %>

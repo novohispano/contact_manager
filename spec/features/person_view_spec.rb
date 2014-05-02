@@ -23,11 +23,11 @@ describe 'the person view', type: :feature do
   end
 
   it 'has a link to add a new phone number' do
-    expect(page).to have_link('Add phone number', href: new_phone_number_path(contact_id: person, contact_type: 'Person'))
+    expect(page).to have_link('Add phone number for John Doe', href: new_phone_number_path(contact_id: person, contact_type: 'Person'))
   end
 
   it 'adds a new phone number' do
-    page.click_link('Add phone number')
+    page.click_link('Add phone number for John Doe')
     page.fill_in('Number', with: '555-8888')
     page.click_button('Create Phone number')
     expect(current_path).to eq(person_path(person))
@@ -73,11 +73,11 @@ describe 'the person view', type: :feature do
   end
 
   it 'has a link to add a new phone number' do
-    expect(page).to have_link('Add email', href: new_email_address_path(contact_id: person.id, contact_type: 'Person'))
+    expect(page).to have_link('Add email for John Doe', href: new_email_address_path(contact_id: person.id, contact_type: 'Person'))
   end
 
   it 'adds an email address' do
-    page.click_link('Add email')
+    page.click_link('Add email for John Doe')
     page.fill_in('Address', with: 'mary@example.com')
     page.click_button('Create Email address')
     expect(current_path).to eq(person_path(person))
