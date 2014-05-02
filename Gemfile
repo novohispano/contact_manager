@@ -28,3 +28,7 @@ group :development, :test do
   gem 'pry'
   # gem 'selenium-webdriver'
 end
+
+group :test do
+  gem 'fabrication', '~> 2.11.2'
+end
